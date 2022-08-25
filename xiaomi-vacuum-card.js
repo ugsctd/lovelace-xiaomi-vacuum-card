@@ -110,7 +110,7 @@
             },
             attributes: {
                 main_brush: {key: 'main_brush'},
-                side_brush: {key: 'side_brush'},
+                side_brush: {key: 'right_brush'},
                 filter: {key: 'main_filter'},
                 sensor: {key: 'sensor_cleaning'},
             },
