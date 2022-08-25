@@ -111,7 +111,7 @@
             attributes: {
                 main_brush: {key: 'main_brush'},
                 side_brush: {key: 'side_brush'},
-                filter: {key: 'filter'},
+                filter: {key: 'main_filter'},
                 sensor: {key: 'sensor_cleaning'},
             },
         },
