@@ -284,17 +284,20 @@
 
         renderAttribute(data) {
             const computeFunc = data.compute || (v => v);
-            const isValidSensorData = data && `${this.config.sensorEntity}_${data.key}` in this._hass.states;
+            const isValidVacuumSensorData = data && `${this.config.sensorEntity}_${data.key}` in this._hass.states;
+            const isValidExternalEntityData = data && data.key in this._hass.states;
             const isValidAttribute = data && data.key in this.stateObj.attributes;
             const isValidEntityData = data && data.key in this.stateObj;
 
-            const value = isValidSensorData
+            const value = isValidVacuumSensorData
                 ? computeFunc(this._hass.states[`${this.config.sensorEntity}_${data.key}`].state) + (data.unit || '')
-                : isValidAttribute
-                    ? computeFunc(this.stateObj.attributes[data.key]) + (data.unit || '')
-                    : isValidEntityData
-                        ? computeFunc(this.stateObj[data.key]) + (data.unit || '')
-                        : null;
+                : isValidExternalEntityData
+                    ? computeFunc(this._hass.states[data.key].state) + (data.unit || '')
+                    : isValidAttribute
+                        ? computeFunc(this.stateObj.attributes[data.key]) + (data.unit || '')
+                        : isValidEntityData
+                            ? computeFunc(this.stateObj[data.key]) + (data.unit || '')
+                            : null;
             const attribute = html`<div>
                 ${data.icon && this.renderIcon(data)}
                 ${(data.label || '') + (value !== null ? value : this._hass.localize('state.default.unavailable'))}
