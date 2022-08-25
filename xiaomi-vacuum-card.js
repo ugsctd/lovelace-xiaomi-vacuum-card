@@ -109,10 +109,10 @@
                 status: {key: 'state'},
             },
             attributes: {
-                main_brush: {key: 'mainBrush'},
-                side_brush: {key: 'sideBrush'},
+                main_brush: {key: 'main_brush'},
+                side_brush: {key: 'side_brush'},
                 filter: {key: 'filter'},
-                sensor: {key: 'sensor'},
+                sensor: {key: 'sensor_cleaning'},
             },
         },
         roomba: {
